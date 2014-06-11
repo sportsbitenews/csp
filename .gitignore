@@ -1,6 +1,8 @@
 /.bundle
 /coverage
 /db/*.sqlite3
+log
+test
 /log/*.log
 /tmp
 /config/database.yml

@@ -8,4 +8,7 @@ class Pipeline < ActiveRecord::Base
   has_many :pipeline_pages, dependent: :destroy
   has_many :pages, :through => :pipeline_pages
 
+  def add_page page
+    self.pipeline_pages.find_or_create_by!(page_id: page.id)
+  end
 end

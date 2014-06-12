@@ -1,6 +1,6 @@
 class Pipeline < ActiveRecord::Base
   attr_accessible :locale, :status, :serial
-  attr_accessible :country, :country_id
+  attr_accessible :country, :country_id, :product, :product_id
 
   belongs_to :country
   belongs_to :product

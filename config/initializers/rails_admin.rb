@@ -9,6 +9,7 @@ RailsAdmin.config do |config|
     'ActiveRecord::SessionStore::Session',
     'Country',
     'Page',
+    'PagePipeline',
     'PageFunctionGroup',
     'Pipeline',
   ]

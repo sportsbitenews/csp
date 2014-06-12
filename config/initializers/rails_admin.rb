@@ -7,7 +7,10 @@ RailsAdmin.config do |config|
   
   config.included_models = [
     'ActiveRecord::SessionStore::Session',
-    'Country'
+    'Country',
+    'Page',
+    'PageFunctionGroup',
+    'Pipeline',
   ]
 
   require 'rack'

@@ -2,7 +2,16 @@
 require 'spec_helper'
 
 RSpec.describe Pipeline, :type => :model do
-  it "should add page successfully" do
-    FactoryGirl.create(:pipeline)
+  
+  before(:each) do
+    @pipeline = FactoryGirl.create(:pipeline)
+    @page = FactoryGirl.create(:page)
   end
+
+  it "should add page successfully" do
+    @pipeline.add_page @page
+    expect(@pipeline.pages.size).to eq 1
+    expect(@pipeline.pages.last).to eq @page
+  end
+
 end

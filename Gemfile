@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 #region app
 gem 'rails', '4.1.0'
-ruby "2.1.0"
+ruby "2.1.2"
 gem 'pg' #postgres
 # Required after migrating to Rails 4.0.
 gem 'protected_attributes'
@@ -10,7 +10,6 @@ gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 #endregion app
-
 
 #region server
 gem "unicorn", "~> 4.6.2" #webserveris
@@ -23,13 +22,6 @@ gem 'resque', require: "resque/server" #async jobu izpildes rīks
 gem "resque-loner", "~> 1.2.1" #atļauj iespējamību vienas grupas jobiem tikt izpildītiem pa vienam
 gem 'rails_12factor', :group => [:production, :staging]
 #endregion server
-
-#region debug_test
-gem "better_errors", :group => [:development, :staging] #nodrošina detalizētākus error paziņojumus
-gem "binding_of_caller", :group => [:development, :staging] #better errors REPL and local/instance variable inspection
-gem "faker", :group => [:development, :test] #šis ģenerē dummy/fake datus pēc pieprasījuma
-gem "priscilla", :group => [:development, :test] #grafiskāks loggers
-#endregion debug_test
 
 #region asset_stuff
 gem 'sass-rails', '~> 4.0.3' # Use SCSS for stylesheets
@@ -44,24 +36,6 @@ gem 'bourbon'
 gem 'jquery-rails'
 gem 'bootstrap-sass', '2.3.2.2'
 #region asset_stuff
-
-#region development
-group :development do
-  gem 'spring' # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem "rails_best_practices" #ģenerē reportu, kur nav izmantota labā prakse
-  gem "simplecov" #ģenerē rspec testu coverage report
-end
-#endregion development
-
-#region testing
-gem "rspec-rails", :group => [:test, :development]
-group :test do
-  gem "factory_girl_rails"
-  gem "capybara"
-  gem "guard-rspec"
-  gem 'rb-fsevent', '~> 0.9.1'
-end
-#endregion testing
 
 #region payment_systems
 gem "pp-adaptive", "~> 0.0.4"
@@ -90,3 +64,35 @@ gem 'unicode_utils', github: 'lang/unicode_utils', branch: 'master' #atļauj uni
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+#region testing
+gem "rspec-rails", :group => [:test, :development]
+group :test do
+  gem "factory_girl_rails"
+  gem "capybara"
+  gem "guard-rspec"
+  gem 'rb-fsevent', '~> 0.9.1'
+end
+#endregion testing
+
+#region development
+group :development do
+  gem 'spring' # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem "rails_best_practices" #ģenerē reportu, kur nav izmantota labā prakse
+  gem "simplecov" #ģenerē rspec testu coverage report
+end
+#endregion development
+
+#region debugging
+group :development, :staging do
+  gem "better_errors" #nodrošina detalizētākus error paziņojumus
+  gem "binding_of_caller" #better errors REPL and local/instance variable inspection
+end
+#endregion debugging
+
+#region debug dev and test
+group :development, :test do
+  gem "faker" #šis ģenerē dummy/fake datus pēc pieprasījuma
+  gem "priscilla" #grafiskāks console loggers
+end
+#endregion debug dev and test

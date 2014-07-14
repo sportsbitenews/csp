@@ -1,4 +1,4 @@
-# rspec spec/lib/order/order_google_analytics_ext_spec.rb
+# rspec spec/models/concerns/order_google_analytics_ext_spec.rb
 
 require 'spec_helper'
 

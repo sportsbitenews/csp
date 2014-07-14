@@ -1,5 +1,5 @@
 # rspec spec/models/pipeline_spec.rb
-require 'spec_helper'
+require 'rails_helper'
 
 RSpec.describe Pipeline, :type => :model do
   

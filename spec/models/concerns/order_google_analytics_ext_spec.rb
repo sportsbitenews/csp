@@ -1,6 +1,6 @@
 # rspec spec/models/concerns/order_google_analytics_ext_spec.rb
 
-require 'spec_helper'
+require 'rails_helper'
 
 RSpec.describe OrderGoogleAnalyticsExt, type: :model do
 

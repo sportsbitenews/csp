@@ -7,6 +7,8 @@ class CreateTransactions < ActiveRecord::Migration
       t.string :currency
       t.string :provider
       t.string :status
+      t.string :snd_name
+      t.string :snd_acc
       t.text :provider_params
       t.text :mapped_params
       t.date :pay_date

@@ -5,6 +5,6 @@ class Page < ActiveRecord::Base
   has_one :page_function_group
 
   has_many :pipeline_pages, dependent: :destroy
-  has_many :pipelines, :through => :pipeline_pages
+  has_many :pipelines, through: :pipeline_pages
 
 end

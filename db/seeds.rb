@@ -7,3 +7,8 @@ Country.find_or_create_by({title: "Ireland", code: "ie"})
 Country.find_or_create_by({title: "Finland", code: "fi"})
 Country.find_or_create_by({title: "Denmark", code: "dk"})
 Country.find_or_create_by({title: "USA", code: "us"})
+
+PageFunctionGroup.find_or_create_by(name: "static")
+PageFunctionGroup.find_or_create_by(name: "order")
+PageFunctionGroup.find_or_create_by(name: "checkout")
+PageFunctionGroup.find_or_create_by(name: "success")

@@ -2,7 +2,9 @@ source 'https://rubygems.org'
 
 #region app
 gem 'rails', '4.1.0'
+
 ruby "2.1.2"
+
 gem 'pg' #postgres
 # Required after migrating to Rails 4.0.
 gem 'protected_attributes'
@@ -67,7 +69,6 @@ gem 'unicode_utils', github: 'lang/unicode_utils', branch: 'master' #atļauj uni
 
 #region testing
 group :test do
-  gem "rspec-rails"
   gem "factory_girl_rails"
   gem "capybara"
   gem "guard-rspec"
@@ -92,6 +93,7 @@ end
 
 #region debug dev and test
 group :development, :test do
+  gem "rspec-rails"
   gem "faker" #šis ģenerē dummy/fake datus pēc pieprasījuma
   gem "priscilla" #grafiskāks console loggers
 end

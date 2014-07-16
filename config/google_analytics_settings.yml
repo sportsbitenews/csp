@@ -1,0 +1,16 @@
+production:
+  version: "1"
+  tracking_code: UA-41298960-1
+  domain: "stockholmhealth.com"
+staging:
+  version: "1"
+  tracking_code: UA-41298960-5
+  domain: "stockholmhealth.com"
+development:
+  version: "1"
+  tracking_code: UA-41298960-5
+  domain: "stockholmhealth.com"
+test:
+  version: "1"
+  tracking_code: UA-41298960-5
+  domain: "stockholmhealth.com"

@@ -1,6 +1,6 @@
-class CreateTransactions < ActiveRecord::Migration
+class CreatePayments < ActiveRecord::Migration
   def change
-    create_table :transactions do |t|
+    create_table :payments do |t|
       t.string :identifier
       t.integer :amount
       t.float :amount_in_euro

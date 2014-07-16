@@ -21,6 +21,7 @@ module Csp
     # config.i18n.default_locale = :de
 
     config.autoload_paths += %W(#{config.root}/app/models/concerns)
-
+    config.autoload_paths += %W(#{config.root}/lib/google_analytics)
+    
   end
 end

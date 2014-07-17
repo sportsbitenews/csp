@@ -18,8 +18,17 @@ RSpec.describe PipelinePagesExt, type: :model do
     @pipeline_page1 = PipelinePage.find_by(page: @page, pipeline: @pipeline)
     @pipeline_page2 = PipelinePage.find_by(page: @page2, pipeline: @pipeline)
 
+    @pipeline_page1.update_attributes(title: Faker::Lorem.word)
+    @pipeline_page2.update_attributes(title: Faker::Lorem.word)
+
     @pipeline_page1.set_sequencer 1
     @pipeline_page2.set_sequencer 2
+
+    @pipeline_page1.reload
+    @pipeline_page2.reload
+
+    @pipeline_page1_title = @pipeline_page1.title
+    @pipeline_page2_title = @pipeline_page2.title
   end
 
   it "should add successfully" do
@@ -53,10 +62,18 @@ RSpec.describe PipelinePagesExt, type: :model do
 
   end
 
-  # [[@page_name, @page],[@page2_name, @page2],["nonexistent",nil]].each do |name, expected_result|
-  #   it "should return page by its name #{title}" do
-  #     expect(@pipeline.get_page_by_name name).to eq expected_result
-  #   end
-  # end
+  describe "should return page by pipeline page title" do
+    it "existing page1 with title #{@pipeline_page1_title}" do
+      expect(@pipeline.get_page_by_title @pipeline_page1_title).to eq @page
+    end
+
+    it "existing page2 with title #{@pipeline_page2_title}" do
+      expect(@pipeline.get_page_by_title @pipeline_page2_title).to eq @page2
+    end
+
+    it "nonexistent page" do
+      expect(@pipeline.get_page_by_title "nonexistent").to eq nil
+    end
+  end
 
 end

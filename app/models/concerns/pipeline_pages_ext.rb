@@ -3,16 +3,19 @@ module PipelinePagesExt
     self.pipeline_pages.find_or_create_by!(page_id: page.id)
   end
 
+  #returns page
   def get_first_page
    return self.get_page_by_sequencer 1
   end
 
+  #returns page, pass integer sequencer
   def get_page_by_sequencer sequencer
     raise unless sequencer.is_a? Integer
 
     locate_page_by_params sequencer: sequencer
   end
 
+  #returns page, pass pipeline_page title, f.e. checkout-paymode
   def get_page_by_title title
     locate_page_by_params title: title
   end

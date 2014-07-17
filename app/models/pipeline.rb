@@ -1,4 +1,6 @@
 class Pipeline < ActiveRecord::Base
+  include PipelinePagesExt
+
   attr_accessible :locale, :status, :serial
   attr_accessible :country, :country_id, :product, :product_id
 
@@ -8,7 +10,4 @@ class Pipeline < ActiveRecord::Base
   has_many :pipeline_pages, dependent: :destroy
   has_many :pages, through: :pipeline_pages
 
-  def add_page page
-    self.pipeline_pages.find_or_create_by!(page_id: page.id)
-  end
 end

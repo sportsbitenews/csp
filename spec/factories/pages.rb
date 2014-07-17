@@ -3,4 +3,5 @@ FactoryGirl.define do
     t.name Faker::Lorem.word
     t.template Faker::Lorem.word
   end
+  
 end

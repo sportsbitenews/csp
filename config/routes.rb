@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   scope '(:country)' do
     scope '(:locale)' do
-      get "p/:serial/:title", to: "pages#show", as: :page, defaults: { serial: "1", title: "landing" }
-      get "p/:serial", to: "pages#index", defaults: { serial: "1" }
+      get "p/:serial/:title", to: "pipelines#show", as: :page, defaults: { serial: "1", title: "landing" }
+      get "p/:serial", to: "pipelines#index", defaults: { serial: "1" }
     end
   end
 end

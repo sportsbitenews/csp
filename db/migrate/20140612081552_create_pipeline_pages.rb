@@ -4,7 +4,7 @@ class CreatePipelinePages < ActiveRecord::Migration
       t.references :pipeline, index: true
       t.references :page, index: true
       t.string :title
-      t.string :sequencer
+      t.integer :sequencer
       t.timestamps
     end
   end

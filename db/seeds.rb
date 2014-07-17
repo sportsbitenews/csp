@@ -1,4 +1,4 @@
-Country.find_or_create_by({title: "Latvia", code: "lv"})
+Country.find_or_create_by({title: "Latvia", code: "lv", main: true})
 Country.find_or_create_by({title: "Lithuania", code: "lt"})
 Country.find_or_create_by({title: "Estonia", code: "ee"})
 Country.find_or_create_by({title: "Poland", code: "pl"})

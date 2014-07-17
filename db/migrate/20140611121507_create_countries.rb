@@ -3,6 +3,7 @@ class CreateCountries < ActiveRecord::Migration
     create_table :countries do |t|
       t.string :code
       t.string :title
+      t.boolean :main, default: false
       t.timestamps
     end
   end

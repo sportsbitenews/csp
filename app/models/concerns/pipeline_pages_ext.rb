@@ -12,16 +12,16 @@ module PipelinePagesExt
   def get_page_by_sequencer sequencer
     raise unless sequencer.is_a? Integer
 
-    locate_page_by_params sequencer: sequencer
+    get_page_by_params sequencer: sequencer
   end
 
   #returns page, pass pipeline_page title, f.e. checkout-paymode
   def get_page_by_title title
-    locate_page_by_params title: title
+    get_page_by_params title: title
   end
 
   private
-    def locate_page_by_params params
+    def get_page_by_params params
       pipeline_page = self.pipeline_pages.find_by(params)
       return nil unless pipeline_page.present?
       return pipeline_page.page 

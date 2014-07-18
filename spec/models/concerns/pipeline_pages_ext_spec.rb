@@ -37,42 +37,85 @@ RSpec.describe PipelinePagesExt, type: :model do
     expect(@pipeline.pages.last).to eq @page2
   end
 
-  it "should find pipeline first page successfully" do
-    expect(@pipeline.get_first_page).to eq @page
+  context "page obj" do   
+    it "should find pipeline first page successfully" do
+      expect(@pipeline.get_first_page).to eq @page
+    end
+
+    describe "page finding by sequencer" do
+
+      context "should return correct page by sequencer" do 
+        it "1" do
+          expect(@pipeline.get_page_by_sequencer 1).to eq @page
+        end
+        it "2" do
+          expect(@pipeline.get_page_by_sequencer 2).to eq @page2
+        end
+      end
+
+      it "should return nil if page with sequencer not present" do
+        expect(@pipeline.get_page_by_sequencer 3).to be nil
+      end
+
+      it "should raise error if something else than int passed as param" do
+        expect{ @pipeline.get_page_by_sequencer "string" }.to raise_error
+      end
+
+    end
+
+    describe "should return page by pipeline page title" do
+      it "existing page1 with title #{@pipeline_page1_title}" do
+        expect(@pipeline.get_page_by_title @pipeline_page1_title).to eq @page
+      end
+
+      it "existing page2 with title #{@pipeline_page2_title}" do
+        expect(@pipeline.get_page_by_title @pipeline_page2_title).to eq @page2
+      end
+
+      it "nonexistent page" do
+        expect(@pipeline.get_page_by_title "nonexistent").to eq nil
+      end
+    end
   end
 
-  describe "page finding by sequencer" do
+  context "pipeline page" do
+    it "should find pipeline first page successfully" do
+      expect(@pipeline.get_first_pipeline_page).to eq @pipeline_page1
+    end
 
-    context "should return correct page by sequencer" do 
-      it "1" do
-        expect(@pipeline.get_page_by_sequencer 1).to eq @page
+    describe "page finding by sequencer" do
+
+      context "should return correct page by sequencer" do 
+        it "1" do
+          expect(@pipeline.get_pipeline_page_by_sequencer 1).to eq @pipeline_page1
+        end
+        it "2" do
+          expect(@pipeline.get_pipeline_page_by_sequencer 2).to eq @pipeline_page2
+        end
       end
-      it "2" do
-        expect(@pipeline.get_page_by_sequencer 2).to eq @page2
+
+      it "should return nil if page with sequencer not present" do
+        expect(@pipeline.get_pipeline_page_by_sequencer 3).to be nil
       end
+
+      it "should raise error if something else than int passed as param" do
+        expect{ @pipeline.get_pipeline_page_by_sequencer "string" }.to raise_error
+      end
+
     end
 
-    it "should return nil if page with sequencer not present" do
-      expect(@pipeline.get_page_by_sequencer 3).to be nil
-    end
+    describe "should return page by pipeline page title" do
+      it "existing page1 with title #{@pipeline_page1_title}" do
+        expect(@pipeline.get_pipeline_page_by_title @pipeline_page1_title).to eq @pipeline_page1
+      end
 
-    it "should raise error if something else than int passed as param" do
-      expect{ @pipeline.get_page_by_sequencer "string" }.to raise_error
-    end
+      it "existing page2 with title #{@pipeline_page2_title}" do
+        expect(@pipeline.get_pipeline_page_by_title @pipeline_page2_title).to eq @pipeline_page2
+      end
 
-  end
-
-  describe "should return page by pipeline page title" do
-    it "existing page1 with title #{@pipeline_page1_title}" do
-      expect(@pipeline.get_page_by_title @pipeline_page1_title).to eq @page
-    end
-
-    it "existing page2 with title #{@pipeline_page2_title}" do
-      expect(@pipeline.get_page_by_title @pipeline_page2_title).to eq @page2
-    end
-
-    it "nonexistent page" do
-      expect(@pipeline.get_page_by_title "nonexistent").to eq nil
+      it "nonexistent page" do
+        expect(@pipeline.get_pipeline_page_by_title "nonexistent").to eq nil
+      end
     end
   end
 

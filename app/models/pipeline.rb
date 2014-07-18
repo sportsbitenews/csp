@@ -12,7 +12,6 @@ class Pipeline < ActiveRecord::Base
   
   validates :group, presence: true
 
-
   def self.locate domain: domain, country: country, locale: locale 
     pipeline = Pipeline.locate_matching_parameters domain: domain, country: country, locale: locale, main: true
     pipeline = Pipeline.locate_matching_parameters domain: domain, country: country, locale: locale, main: false unless pipeline.present?

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  helper_method :current_order, :current_country, :current_locale
+  helper_method :current_order, :current_country, :current_language_code
 
   def current_order
     return @current_order if @current_order.present?

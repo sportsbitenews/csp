@@ -4,15 +4,6 @@ RailsAdmin.config do |config|
   end
 
   config.main_app_name = ['CSP', 'Super Admin panel']
-  
-  config.included_models = [
-    'ActiveRecord::SessionStore::Session',
-    'Country',
-    'Page',
-    'PagePipeline',
-    'PageFunctionGroup',
-    'Pipeline',
-  ]
 
   require 'rack'
   config.model ActiveRecord::SessionStore::Session do

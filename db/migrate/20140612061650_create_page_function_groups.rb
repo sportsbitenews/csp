@@ -1,7 +1,14 @@
 class CreatePageFunctionGroups < ActiveRecord::Migration
   def change
     create_table :page_function_groups do |t|
-      t.string :name
+      t.boolean :require_order, default: false
+      t.boolean :call_api, default: false
+      
+      t.integer :charge_pipeline_page_id, index: true
+      t.integer :fail_pipeline_page_id, index: true
+      t.integer :success_pipeline_page_id, index: true
+
+      t.references :function_group, index: true
       t.timestamps
     end
   end

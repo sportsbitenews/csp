@@ -1,5 +1,8 @@
+# rspec spec/models/page_function_group_spec.rb
 require 'rails_helper'
 
 RSpec.describe PageFunctionGroup, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "validates" do
+      
+  end
 end

@@ -3,7 +3,7 @@ class PageFunctionGroup < ActiveRecord::Base
   attr_accessible :pages, :function_group, :function_group_id, :charge_pipeline_page, :charge_pipeline_page_id, :fail_pipeline_page, :fail_pipeline_page_id, :success_pipeline_page, :success_pipeline_page_id
 
   belongs_to :function_group
-  has_many :pages
+  has_one :page
 
   has_one :charge_pipeline_page, class_name: "PipelinePage", foreign_key: "charge_pipeline_page_id"
   has_one :fail_pipeline_page, class_name: "PipelinePage", foreign_key: "fail_pipeline_page_id"

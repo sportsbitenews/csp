@@ -5,5 +5,6 @@ class Order < ActiveRecord::Base
   attr_accessible :logs
 
   has_many :logs
+  has_many :tags
 
 end

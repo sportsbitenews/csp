@@ -4,7 +4,7 @@ class CreateOrders < ActiveRecord::Migration
       t.string :email, index: true
       t.string :status
       t.string :locale
-      t.string :category, length: 1
+      t.integer :category
       t.text :ga_data
       t.timestamps
     end

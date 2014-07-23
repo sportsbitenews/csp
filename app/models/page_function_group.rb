@@ -13,6 +13,18 @@ class PageFunctionGroup < ActiveRecord::Base
 
   # validates :success_pipeline_page, :fail_pipeline_page, presence: true, if: :type_checkout?
 
+  def add_charge_page
+    
+  end
+
+  def add_fail_page
+    
+  end
+
+  def add_success_page
+    
+  end
+
   def type_static?
     return self.function_group.name == "static"
   end

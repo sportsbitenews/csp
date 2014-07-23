@@ -3,12 +3,14 @@ class Page < ActiveRecord::Base
 
   attr_accessor :functionality
   attr_accessible :name, :template
-  attr_accessible :page_function_group, :page_function_group_id
+  attr_accessible :page_function_group, :page_function_group_id, :logs
 
   belongs_to :page_function_group, dependent: :destroy
 
   has_many :pipeline_pages, dependent: :destroy
   has_many :pipelines, through: :pipeline_pages
+
+  has_many :logs
 
   #validation
   validates :functionality, presence: true

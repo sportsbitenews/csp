@@ -11,7 +11,6 @@ class Pipeline < ActiveRecord::Base
   has_many :pages, through: :pipeline_pages
 
   has_many :logs
-
   
   validates :group, presence: true
 

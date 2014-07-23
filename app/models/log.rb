@@ -7,4 +7,5 @@ class Log < ActiveRecord::Base
   belongs_to :page
   belongs_to :pipeline
 
+  validates :key, presence: true
 end

@@ -6,6 +6,7 @@ class CreateOrders < ActiveRecord::Migration
       t.string :locale
       t.integer :category
       t.text :ga_data
+      t.references :country, index: true
       t.timestamps
     end
   end

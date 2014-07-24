@@ -19,6 +19,14 @@ module OrderVirtualAttributesExt
     self.save!
   end
 
+  def method_missing(m, *args, &block)  
+    begin
+      super
+    rescue  
+      pr "WARNING: Trying to access undefined order method @ OrderVirtualAttributesExt"
+    end
+  end 
+
   private
     def update_virtual_attribute log, value
       log.update_attributes!(value: value)

@@ -62,6 +62,7 @@ gem 'phrase' #lokalizācijas repozitorijs un API, iespējams tulkot runtime
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem "turnout", "~> 0.2.5" #maintenance gem
 gem 'unicode_utils', github: 'lang/unicode_utils', branch: 'master' #atļauj unicode char .downcase etc.
+gem "priscilla" #grafiskāks console loggers
 #endregion utilities
 
 # Use debugger
@@ -95,6 +96,5 @@ end
 group :development, :test do
   gem "rspec-rails"
   gem "faker" #šis ģenerē dummy/fake datus pēc pieprasījuma
-  gem "priscilla" #grafiskāks console loggers
 end
 #endregion debug dev and test

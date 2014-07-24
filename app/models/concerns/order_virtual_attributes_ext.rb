@@ -23,7 +23,7 @@ module OrderVirtualAttributesExt
     begin
       super
     rescue  
-      pr "WARNING: Trying to access undefined order method @ OrderVirtualAttributesExt"
+      pr "WARNING: Trying to access undefined order method #{m.to_s} @ OrderVirtualAttributesExt"
     end
   end 
 

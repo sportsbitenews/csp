@@ -2,8 +2,11 @@ class Order < ActiveRecord::Base
   include OrderGoogleAnalyticsExt
   include OrderCategoryExt
   include OrderTagExt
+  include OrderVirtualAttributesExt
 
   before_save :assign_category
+
+  attr_accessor :test
 
   attr_accessible :email, :status, :locale, :category, :ga_data
   attr_accessible :logs, :country, :country_id

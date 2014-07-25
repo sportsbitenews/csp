@@ -2,7 +2,7 @@ module OrderVirtualAttributesExt
   def update_accessors_and_virtual_attributes! params
     params.each do |key, value|
 
-      if self.has_attribute? key
+      if is_accessor_or_active_record_attribute? key
         send("#{key.to_s}=", value)
         next
       end
@@ -28,6 +28,10 @@ module OrderVirtualAttributesExt
   # end 
 
   private
+    def is_accessor_or_active_record_attribute? key
+      return (self.has_attribute? key) || ((Order.instance_methods.include? key) && (Log.find_by(key: key).nil?))
+    end
+
     def update_virtual_attribute log, value
       log.update_attributes!(value: value)
     end

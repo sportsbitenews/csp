@@ -17,6 +17,7 @@ RSpec.describe OrderVirtualAttributesExt, type: :model do
         {
           email: @new_email,
           locale: "ee",
+          test: true,
           custom_key1: "custom_value1", custom_key2: "custom_value2",
           custom_key3: "custom_value3_changed", custom_key4: "custom_value4_changed",
           custom_key5: "custom_value5", custom_key6: "custom_value6"
@@ -42,6 +43,7 @@ RSpec.describe OrderVirtualAttributesExt, type: :model do
     }
     @order2.update_accessors_and_virtual_attributes!(@params2[:order])
     @order2.reload
+
   end
 
   context "Active record fields and attributes are updated, but logs are not created" do
@@ -66,11 +68,11 @@ RSpec.describe OrderVirtualAttributesExt, type: :model do
     end
 
     context "test accessor" do
-      xit "should have updated attribute" do
+      it "should have updated attribute" do
         expect(@order.test).to eq true
       end
 
-      xit "should have not created log" do
+      it "should have not created log" do
         expect(Log.where(key: "test", value: true, order: @order).size).to eq 0
       end
     end

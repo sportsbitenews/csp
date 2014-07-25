@@ -1,11 +1,19 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  helper_method :current_order, :current_country, :current_language_code
+  helper_method :current_order, :current_country, :current_language_code, :set_session
+
+  def set_session id
+    session[:current_order_id] = id
+  end
 
   def current_order
     return @current_order if @current_order.present?
-    @current_order ||= session[:current_order_id] && Order.find_by_id(session[:current_order_id])
+    if session[:current_order_id].present?
+      @current_order ||= session[:current_order_id] && Order.find_by_id(session[:current_order_id])
+    else
+      @current_order = Order.new
+    end
     return @current_order
   end
 

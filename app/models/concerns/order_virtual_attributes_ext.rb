@@ -1,7 +1,6 @@
 module OrderVirtualAttributesExt
   def update_accessors_and_virtual_attributes! params
     params.each do |key, value|
-
       if is_accessor_or_active_record_attribute? key
         send("#{key.to_s}=", value)
         next
@@ -19,13 +18,19 @@ module OrderVirtualAttributesExt
     self.save!
   end
 
-  # def method_missing(m, *args, &block)
-  #   begin
-  #     super
-  #   rescue
-  #     pr "WARNING: Trying to access undefined order method #{m.to_s} @ OrderVirtualAttributesExt"
-  #   end
-  # end 
+  def method_missing(m, *args, &block)
+    begin
+      super
+    rescue
+      if ALLOWED_ORDER_VIRTUAL_ATTRIBUTES.include? m.to_s
+        self.class.send(:define_method, m.to_sym) do
+          get_virtual_attribute(m.to_s)
+        end
+      else 
+        super 
+      end
+    end
+  end 
 
   private
     def is_accessor_or_active_record_attribute? key

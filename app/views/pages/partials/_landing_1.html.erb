@@ -1,1 +1,22 @@
-Hello World!
+
+<%= session[:current_order_id] = nil%>
+-------------- FORMFOR
+
+<%= form_for current_order do |f| %>
+  <div>
+   Vārds <%= f.text_field :name %>
+  </div>
+  <div>
+   Svars <%= f.text_field :weight %>
+  </div>
+  <div>
+    Vecums<%= f.text_field :age %>
+  </div>
+  <div>
+    Pilsēta <%= f.text_field :city %> 
+  </div>
+  <div>
+    Test <%= f.text_field :test %> 
+  </div>
+  <%= f.submit %>
+<% end %>

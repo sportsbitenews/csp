@@ -1,6 +1,7 @@
 module PipelinePagesExt
   def add_page page
-    self.pipeline_pages.find_or_create_by!(page_id: page.id)
+    pipeline_page = self.pipeline_pages.find_or_create_by!(page_id: page.id)
+    return pipeline_page
   end
 
   #returns page

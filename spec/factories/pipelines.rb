@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :pipeline, class: Pipeline do |t|
     t.locale "lv"
     t.status "active"
-    t.serial "serial"
+    t.serial "1"
     t.group "norden"
     t.main false
     t.product {FactoryGirl.create(:product)}
@@ -12,7 +12,7 @@ FactoryGirl.define do
   factory :pipeline_with_page, class: Pipeline do |t|
     t.locale "lv"
     t.status "active"
-    t.serial "serial"
+    t.serial "1"
     t.group "norden"
     t.main false
     t.product {FactoryGirl.create(:product)}

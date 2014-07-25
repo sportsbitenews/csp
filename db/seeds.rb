@@ -12,3 +12,16 @@ FunctionGroup.find_or_create_by(name: "static")
 FunctionGroup.find_or_create_by(name: "order")
 FunctionGroup.find_or_create_by(name: "checkout")
 FunctionGroup.find_or_create_by(name: "success")
+
+if Rails.env.development?
+  pipe = Pipeline.find_or_create_by(locale: "lv", status: "active", serial: "1", group: "norden", main: true, country: Country.get_main)
+  landing_page = Page.find_or_create_by(name: "landing", template: "landing_1", functionality: "order")
+  test_page = Page.find_or_create_by(name: "test1", template: "test_1", functionality: "order")
+  
+  pipe.add_page landing_page
+  pipe.add_page test_page
+
+  PipelinePage.find_by(page: landing_page, pipeline: pipe).update_attributes(title: "dev_landing", sequencer: 1)
+  PipelinePage.find_by(page: test_page, pipeline: pipe).update_attributes(title: "test1", sequencer: 2)
+
+end

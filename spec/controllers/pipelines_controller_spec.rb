@@ -4,7 +4,7 @@ require 'rails_helper'
 RSpec.describe PipelinesController, :type => :controller do
 
   before(:all) do
-    FactoryGirl.create(:pipeline_with_page)
+    @pipeline = FactoryGirl.create(:pipeline_with_page)
   end
 
   describe "routes" do
@@ -17,9 +17,13 @@ RSpec.describe PipelinesController, :type => :controller do
     end
   end
 
-  it "index" do
-    get :index
-    expect(response.status).to eq 301
+  context "index" do
+    [{}, {country: "lv"}, {country: "lv", locale: "lv"}].each do |params|
+      it "with params #{params}" do
+        get :index, params
+        expect(response.status).to eq 301
+      end
+    end
   end
 
   it "show" do

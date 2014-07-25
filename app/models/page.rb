@@ -1,8 +1,7 @@
 class Page < ActiveRecord::Base
   before_validation :add_functionality
 
-  attr_accessor :functionality
-  attr_accessible :name, :template
+  attr_accessible :name, :template, :functionality
   attr_accessible :page_function_group, :page_function_group_id, :logs
 
   belongs_to :page_function_group, dependent: :destroy

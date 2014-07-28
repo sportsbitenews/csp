@@ -19,4 +19,6 @@ class Order < ActiveRecord::Base
   has_many :order_tags, dependent: :destroy
   has_many :tags, through: :order_tags, dependent: :destroy
 
+  GENDERS = {"female" => false, "male" => true}
+
 end

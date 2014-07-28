@@ -12,14 +12,6 @@ RSpec.describe OrderVirtualAttributesExt, type: :model do
 
     pr "#{@order.email} #{@new_email}"
 
-    module OrderVirtualAttributesExt 
-      ALLOWED_ORDER_DYNAMIC_VIRTUAL_ATTRIBUTES = [
-        "custom_key1"
-      ]
-    end
-
-    pr " ?????? #{ALLOWED_ORDER_DYNAMIC_VIRTUAL_ATTRIBUTES.inspect}"
-    
     @params = {
       order:
         {
@@ -39,7 +31,6 @@ RSpec.describe OrderVirtualAttributesExt, type: :model do
 
     @order.update_accessors_and_virtual_attributes!(@params[:order])
     @order.reload
-
 
     @order2 = FactoryGirl.create(:order, email: Faker::Internet.email)
     @params2 = { 
@@ -88,7 +79,7 @@ RSpec.describe OrderVirtualAttributesExt, type: :model do
     end
   end
 
-  xit "should return nil for non-added key" do
+  it "should return nil for non-added key" do
     expect(@order.data_key).to eq nil
   end
 
@@ -181,8 +172,8 @@ RSpec.describe OrderVirtualAttributesExt, type: :model do
             expect(@order2.data_key).to eq "data_value"
           end
 
-          xit "should return nil for non-added key" do
-            expect(@order2.custom_value2).to eq nil
+          it "should return nil for non-added key" do
+            expect(@order2.custom_key2).to eq nil
           end
 
         end

@@ -1,16 +1,8 @@
-module OrderVirtualAttributesExt
-  ALLOWED_ORDER_DYNAMIC_VIRTUAL_ATTRIBUTES = [
-    "name",
-    "weight",
-    "height",
-    "age",
-    "phone_number",
-    "male"
-  ]
 
+module OrderVirtualAttributesExt  
   def update_accessors_and_virtual_attributes! params
     params.each do |key, value|
-      unless ALLOWED_ORDER_DYNAMIC_VIRTUAL_ATTRIBUTES.include? key
+      unless is_dynamic_virtual_attribute? key
         send("#{key.to_s}=", value)
         next
       end
@@ -28,18 +20,19 @@ module OrderVirtualAttributesExt
   end
 
   def method_missing(m, *args, &block)
-    begin
-      super
-    rescue
-      if ALLOWED_ORDER_DYNAMIC_VIRTUAL_ATTRIBUTES.include? m.to_s
-        define_virtual_attribute_getter_method m.to_s 
-      else 
-        super 
-      end
+    method = m.to_s.gsub("=","")
+    if is_dynamic_virtual_attribute? method
+      define_virtual_attribute_getter_method method
+    else 
+      super 
     end
   end 
 
   private
+    def is_dynamic_virtual_attribute? key
+      return ALLOWED_ORDER_DYNAMIC_VIRTUAL_ATTRIBUTES.include? key
+    end
+
     def is_accessor_or_active_record_attribute? key
       return (self.has_attribute? key) || ((Order.instance_methods.include? key) && (Log.find_by(key: key).nil?))
     end
@@ -51,12 +44,14 @@ module OrderVirtualAttributesExt
     def create_virtual_attribute key, value
       Log.create!(key: key, value: value, order: self)
 
-      define_virtual_attribute_getter_method key unless Order.instance_methods.include? key
+      define_virtual_attribute_getter_method key
     end
 
     def define_virtual_attribute_getter_method key
-      self.class.send(:define_method, key.to_sym) do
-        get_virtual_attribute(key)
+      unless Order.instance_methods.include? key
+        self.class.send(:define_method, key.to_sym) do
+          get_virtual_attribute(key)
+        end
       end
     end
 

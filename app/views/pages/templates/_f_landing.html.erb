@@ -1,20 +1,21 @@
 -------------- FORMFOR
 
 <%= form_for current_order do |f| %>
+  <%= render partial: "pages/partials/page_data" %>
   <div>
    Vārds <%= f.text_field :name %>
   </div>
   <div>
-   Svars <%= f.text_field :weight %>
+    Dzimums <%= f.select :male, {"female" => false, "male" => true}, {} %>
   </div>
   <div>
     Vecums<%= f.text_field :age %>
   </div>
   <div>
-    Pilsēta <%= f.text_field :city %> 
+   Svars <%= f.text_field :weight %>
   </div>
   <div>
-    Test <%= f.text_field :test %> 
+   Augums <%= f.text_field :height %>
   </div>
   <%= f.submit %>
 <% end %>

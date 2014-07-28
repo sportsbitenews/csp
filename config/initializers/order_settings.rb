@@ -1,12 +1,10 @@
 unless Rails.env.test?
   ALLOWED_ORDER_DYNAMIC_VIRTUAL_ATTRIBUTES = [
     :name,
-    :weight,
-    :height,
+    :male, 
     :age,
-    :phone_number,
-    :male,
-    :city
+    :height,
+    :weight
   ]
 else
   ALLOWED_ORDER_DYNAMIC_VIRTUAL_ATTRIBUTES = [

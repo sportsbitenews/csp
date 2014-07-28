@@ -1,4 +1,3 @@
-
 module OrderVirtualAttributesExt  
   def update_accessors_and_virtual_attributes! params
     params.each do |key, value|
@@ -24,13 +23,13 @@ module OrderVirtualAttributesExt
     if is_dynamic_virtual_attribute? method
       define_virtual_attribute_getter_method method
     else 
-      super 
+      super
     end
   end 
 
   private
     def is_dynamic_virtual_attribute? key
-      return ALLOWED_ORDER_DYNAMIC_VIRTUAL_ATTRIBUTES.include? key
+      return ALLOWED_ORDER_DYNAMIC_VIRTUAL_ATTRIBUTES.include? key.to_sym
     end
 
     def is_accessor_or_active_record_attribute? key

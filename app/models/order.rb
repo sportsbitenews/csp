@@ -20,8 +20,6 @@ class Order < ActiveRecord::Base
   has_many :order_tags, dependent: :destroy
   has_many :tags, through: :order_tags, dependent: :destroy
 
-  GENDERS = {"female" => false, "male" => true}
-
   def add_pipeline_page pipeline_page_id
     pipeline_page = PipelinePage.find pipeline_page_id
     self.pipeline_page = pipeline_page

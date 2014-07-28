@@ -1,7 +1,16 @@
 module OrderVirtualAttributesExt
+  ALLOWED_ORDER_DYNAMIC_VIRTUAL_ATTRIBUTES = [
+    "name",
+    "weight",
+    "height",
+    "age",
+    "phone_number",
+    "male"
+  ]
+
   def update_accessors_and_virtual_attributes! params
     params.each do |key, value|
-      if is_accessor_or_active_record_attribute? key
+      unless ALLOWED_ORDER_DYNAMIC_VIRTUAL_ATTRIBUTES.include? key
         send("#{key.to_s}=", value)
         next
       end
@@ -22,10 +31,8 @@ module OrderVirtualAttributesExt
     begin
       super
     rescue
-      if ALLOWED_ORDER_VIRTUAL_ATTRIBUTES.include? m.to_s
-        self.class.send(:define_method, m.to_sym) do
-          get_virtual_attribute(m.to_s)
-        end
+      if ALLOWED_ORDER_DYNAMIC_VIRTUAL_ATTRIBUTES.include? m.to_s
+        define_virtual_attribute_getter_method m.to_s 
       else 
         super 
       end
@@ -44,6 +51,10 @@ module OrderVirtualAttributesExt
     def create_virtual_attribute key, value
       Log.create!(key: key, value: value, order: self)
 
+      define_virtual_attribute_getter_method key unless Order.instance_methods.include? key
+    end
+
+    def define_virtual_attribute_getter_method key
       self.class.send(:define_method, key.to_sym) do
         get_virtual_attribute(key)
       end

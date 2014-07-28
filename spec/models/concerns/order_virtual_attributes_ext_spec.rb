@@ -12,6 +12,14 @@ RSpec.describe OrderVirtualAttributesExt, type: :model do
 
     pr "#{@order.email} #{@new_email}"
 
+    module OrderVirtualAttributesExt 
+      ALLOWED_ORDER_DYNAMIC_VIRTUAL_ATTRIBUTES = [
+        "custom_key1"
+      ]
+    end
+
+    pr " ?????? #{ALLOWED_ORDER_DYNAMIC_VIRTUAL_ATTRIBUTES.inspect}"
+    
     @params = {
       order:
         {
@@ -43,6 +51,8 @@ RSpec.describe OrderVirtualAttributesExt, type: :model do
     }
     @order2.update_accessors_and_virtual_attributes!(@params2[:order])
     @order2.reload
+
+
 
   end
 

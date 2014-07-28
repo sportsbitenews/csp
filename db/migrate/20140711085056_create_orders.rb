@@ -7,6 +7,7 @@ class CreateOrders < ActiveRecord::Migration
       t.integer :category
       t.text :ga_data
       t.references :country, index: true
+      t.references :pipeline_page, index: true
       t.timestamps
     end
   end

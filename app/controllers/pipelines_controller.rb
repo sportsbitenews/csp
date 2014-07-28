@@ -19,8 +19,11 @@ class PipelinesController < ApplicationController
 
     if @pipeline.present?
       if params[:title].present?
-        @page = @pipeline.get_page_by_title params[:title]
-        if @page.present?
+        @pipeline_page = @pipeline.get_pipeline_page_by_title params[:title]
+        
+        if @pipeline_page.present?
+          @page = @pipeline_page.page
+          @current_sequencer = @pipeline_page.sequencer
           process_page
         else
           redirect_to_pipeline_first_page
@@ -36,12 +39,11 @@ class PipelinesController < ApplicationController
 
   private
     def process_page
-      render partial: "pages/partials/#{@page.template}"
-      # render partial: @page.template
+      render :show
     end
 
     def redirect_to_pipeline_first_page
-      path = page_path(country: current_country.code, locale: @pipeline.locale, serial: @pipeline.serial, title: @pipeline.get_first_pipeline_page.title)
+      path = page_path(country: @pipeline.country.code, locale: @pipeline.locale, serial: @pipeline.serial, title: @pipeline.get_first_pipeline_page.title)
       pr path
       redirect_to path
     end

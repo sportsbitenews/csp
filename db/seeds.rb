@@ -14,8 +14,8 @@ FunctionGroup.find_or_create_by(name: "checkout")
 FunctionGroup.find_or_create_by(name: "success")
 
 if Rails.env.development?
-  f_intro = Page.find_or_create_by(name: "intro", template: "f_intro", functionality: "static")
-  f_landing = Page.find_or_create_by(name: "landing", template: "f_landing", functionality: "order")
+  f_intro = Page.find_or_create_by(name: "f_intro", template: "f_intro", functionality: "static")
+  f_landing = Page.find_or_create_by(name: "f_landing", template: "f_landing", functionality: "order")
   f_test1 = Page.find_or_create_by(name: "f_test1", template: "f_test_1", functionality: "order")
   f_test2 = Page.find_or_create_by(name: "f_test2", template: "f_test_2", functionality: "order")
   f_test3 = Page.find_or_create_by(name: "f_test3", template: "f_test_3", functionality: "order")

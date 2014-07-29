@@ -1,10 +1,14 @@
 class ApplicationController < ActionController::Base
   # protect_from_forgery with: :exception
 
-  helper_method :current_order, :current_country, :current_language_code, :set_session
+  helper_method :current_order, :current_country, :current_language_code, :set_session, :reset_session
 
   def set_session id
-    session[:current_order_id] = id
+    session[:current_order_id] = id unless session[:current_order_id].present?
+  end
+
+  def reset_session
+    session[:current_order_id] = nil
   end
 
   def current_order

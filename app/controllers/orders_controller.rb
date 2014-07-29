@@ -12,8 +12,17 @@ class OrdersController < ApplicationController
   private
     def process_order_params params
       raise "PipelinePageNotPresent" unless params[:pipeline_page_id].present?
-      @order.update_accessors_and_virtual_attributes!(params[:order]) if params[:order].present?
+      
+      if params[:order].present?
+        @order.update_accessors_and_virtual_attributes!(params[:order]) 
+      else
+        @order.save
+      end
+
+      set_session @order.id
+      @order.process_answers params[:questions_answers]
       @order.add_pipeline_page params[:pipeline_page_id]
+
       redirect_to_next_page params
     end
 

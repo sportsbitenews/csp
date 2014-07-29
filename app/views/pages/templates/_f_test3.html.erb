@@ -1,1 +1,9 @@
 TEST3
+<% if current_order.male? %>
+ <% questions_hash = ["q0010", "q0011", "q0016", "q0013", "q0014"]  %>
+<% else %>
+ <% questions_hash = ["q0010", "q0011", "q0012", "q0013", "q0014"] %>
+
+<% end %>
+
+<%= render partial: "pages/partials/test", locals: {questions_hash: questions_hash} %>

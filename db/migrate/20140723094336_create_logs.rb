@@ -4,7 +4,7 @@ class CreateLogs < ActiveRecord::Migration
       t.string :key
       t.string :value
       t.references :order, index: true
-      t.references :question, index: true
+      t.references :answer, index: true
       t.references :page, index: true
       t.references :pipeline, index: true
       t.timestamps

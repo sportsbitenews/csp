@@ -1,4 +1,4 @@
--------------- FORMFOR
+LANDING
 
 <%= form_for current_order do |f| %>
   <%= render partial: "pages/partials/page_data" %>
@@ -6,7 +6,7 @@
    Vārds <%= f.text_field :name %>
   </div>
   <div>
-    Dzimums <%= f.select :male, {"female" => false, "male" => true}, {} %>
+    Dzimums <%= f.select :gender, {"Sieviete" => "female", "Vīrietis" => "male"}, {} %>
   </div>
   <div>
     Vecums<%= f.text_field :age %>

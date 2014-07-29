@@ -13,6 +13,171 @@ FunctionGroup.find_or_create_by(name: "order")
 FunctionGroup.find_or_create_by(name: "checkout")
 FunctionGroup.find_or_create_by(name: "success")
 
+q0001 = Question.find_or_create_by(identifier: "q0001")
+q0002 = Question.find_or_create_by(identifier: "q0002")
+q0003 = Question.find_or_create_by(identifier: "q0003")
+q0004 = Question.find_or_create_by(identifier: "q0004")
+q0005 = Question.find_or_create_by(identifier: "q0005")
+q0006 = Question.find_or_create_by(identifier: "q0006")
+q0007 = Question.find_or_create_by(identifier: "q0007")
+q0008 = Question.find_or_create_by(identifier: "q0008")
+q0009 = Question.find_or_create_by(identifier: "q0009")
+q0010 = Question.find_or_create_by(identifier: "q0010")
+q0011 = Question.find_or_create_by(identifier: "q0011")
+q0012 = Question.find_or_create_by(identifier: "q0012")
+q0013 = Question.find_or_create_by(identifier: "q0013")
+q0014 = Question.find_or_create_by(identifier: "q0014")
+q0015 = Question.find_or_create_by(identifier: "q0015")
+q0016 = Question.find_or_create_by(identifier: "q0016")
+
+q0001a1 = Answer.find_or_create_by(identifier: "q0001a1")
+q0001a1.add_operation "apetite_morning"
+
+q0001a2 = Answer.find_or_create_by(identifier: "q0001a2")
+q0001a2.remove_operation "apetite_morning"
+
+q0002a1 = Answer.find_or_create_by(identifier: "q0002a1")
+q0002a1.add_operation "sweet"
+
+q0002a2 = Answer.find_or_create_by(identifier: "q0002a2")
+q0002a2.remove_operation "sweet"
+
+q0003a1 = Answer.find_or_create_by(identifier: "q0003a1")
+q0003a1.remove_operation "smoking"
+
+q0003a2 = Answer.find_or_create_by(identifier: "q0003a2")
+q0003a2.add_operation "smoking"
+
+q0004a1 = Answer.find_or_create_by(identifier: "q0004a1")
+q0004a1.remove_operation "cold"
+
+q0004a2 = Answer.find_or_create_by(identifier: "q0004a2")
+q0004a2.add_operation "cold"
+
+q0005a1 = Answer.find_or_create_by(identifier: "q0005a1")
+q0005a1.add_operation "stomack_bloat_rare"
+q0005a1.remove_operation "stomack_bloat_medium"
+q0005a1.remove_operation "stomack_bloat_often"
+
+q0005a2 = Answer.find_or_create_by(identifier: "q0005a2")
+q0005a2.remove_operation "stomack_bloat_rare"
+q0005a2.add_operation "stomack_bloat_medium"
+q0005a2.remove_operation "stomack_bloat_often"
+
+q0005a3 = Answer.find_or_create_by(identifier: "q0005a3")
+q0005a3.remove_operation "stomack_bloat_rare"
+q0005a3.remove_operation "stomack_bloat_medium"
+q0005a3.add_operation "stomack_bloat_often"
+
+q0006a1 = Answer.find_or_create_by(identifier: "q0006a1")
+q0006a1.add_operation "hormonal_contraception"
+
+q0006a2 = Answer.find_or_create_by(identifier: "q0006a2")
+q0006a2.remove_operation "hormonal_contraception"
+
+q0007a1 = Answer.find_or_create_by(identifier: "q0007a1")
+q0007a1.add_operation "tea"
+q0007a1.remove_operation "coffee"
+
+q0007a2 = Answer.find_or_create_by(identifier: "q0007a2")
+q0007a2.remove_operation "tea"
+q0007a2.add_operation "coffee"
+
+q0008a1 = Answer.find_or_create_by(identifier: "q0008a1")
+q0008a1.remove_operation "meal_after_1hour"
+
+q0008a2 = Answer.find_or_create_by(identifier: "q0008a2")
+q0008a2.add_operation "meal_after_1hour"
+
+q0009a1 = Answer.find_or_create_by(identifier: "q0009a1")
+q0009a1.add_operation "sleep_problems"
+
+q0009a2 = Answer.find_or_create_by(identifier: "q0009a2")
+q0009a2.remove_operation "sleep_problems"
+
+q0010a1 = Answer.find_or_create_by(identifier: "q0010a1")
+q0010a1.add_operation "meat"
+
+q0010a2 = Answer.find_or_create_by(identifier: "q0010a2")
+q0010a2.remove_operation "meat"
+
+q0011a1 = Answer.find_or_create_by(identifier: "q0011a1")
+q0011a1.add_operation "hiccups"
+
+q0011a2 = Answer.find_or_create_by(identifier: "q0011a2")
+q0011a2.remove_operation "hiccups"
+
+q0012a1 = Answer.find_or_create_by(identifier: "q0012a1")
+q0012a1.add_operation "children"
+q0012a1.remove_operation "pregnant"
+
+q0012a2 = Answer.find_or_create_by(identifier: "q0012a2")
+q0012a2.remove_operation "children"
+q0012a2.remove_operation "pregnant"
+
+q0012a3 = Answer.find_or_create_by(identifier: "q0012a3")
+q0012a3.remove_operation "children"
+q0012a3.add_operation "pregnant"
+
+q0013a1 = Answer.find_or_create_by(identifier: "q0013a1")
+q0013a1.remove_operation "milk"
+
+q0013a2 = Answer.find_or_create_by(identifier: "q0013a2")
+q0013a2.add_operation "milk"
+
+q0014a1 = Answer.find_or_create_by(identifier: "q0014a1")
+q0014a1.add_operation "email_morning"
+
+q0014a2 = Answer.find_or_create_by(identifier: "q0014a2")
+q0014a2.remove_operation "email_morning"
+
+q0015a1 = Answer.find_or_create_by(identifier: "q0015a1")
+q0015a1.add_operation "bone_pain"
+
+q0015a2 = Answer.find_or_create_by(identifier: "q0015a2")
+q0015a2.add_operation "bone_pain"
+
+q0016a1 = Answer.find_or_create_by(identifier: "q0016a1")
+q0016a1.add_operation "alcohol"
+
+q0016a2 = Answer.find_or_create_by(identifier: "q0016a2")
+q0016a2.remove_operation "alcohol"
+
+q0001.add_answer q0001a1
+q0001.add_answer q0001a2
+q0002.add_answer q0002a1
+q0002.add_answer q0002a2
+q0003.add_answer q0003a1
+q0003.add_answer q0003a2
+q0004.add_answer q0004a1
+q0004.add_answer q0004a2
+q0005.add_answer q0005a1
+q0005.add_answer q0005a2
+q0005.add_answer q0005a3
+q0006.add_answer q0006a1
+q0006.add_answer q0006a2
+q0007.add_answer q0007a1
+q0007.add_answer q0007a2
+q0008.add_answer q0008a1
+q0008.add_answer q0008a2
+q0009.add_answer q0009a1
+q0009.add_answer q0009a2
+q0010.add_answer q0010a1
+q0010.add_answer q0010a2
+q0011.add_answer q0011a1
+q0011.add_answer q0011a2
+q0012.add_answer q0012a1
+q0012.add_answer q0012a2
+q0012.add_answer q0012a3
+q0013.add_answer q0013a1
+q0013.add_answer q0013a2
+q0014.add_answer q0014a1
+q0014.add_answer q0014a2
+q0015.add_answer q0015a1
+q0015.add_answer q0015a2
+q0016.add_answer q0016a1
+q0016.add_answer q0016a2
+
 if Rails.env.development?
   f_intro = Page.find_or_create_by(name: "f_intro", template: "f_intro", functionality: "static")
   f_landing = Page.find_or_create_by(name: "f_landing", template: "f_landing", functionality: "order")

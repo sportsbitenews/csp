@@ -1,7 +1,18 @@
 class Question < ActiveRecord::Base
-  attr_accessible :I18n_key, :identifier
-  attr_accessible :answers, :logs
+  attr_accessible :identifier
+  attr_accessible :answers
 
   has_many :answers
-  has_many :logs
+
+  validates :identifier, presence: true, uniqueness: true
+
+  def content
+    return I18n.t "questions.#{self.identifier}"
+  end
+
+  def add_answer answer
+    answer.update_attributes(question_id: self.id)
+    self.answers << answer
+    self.save
+  end
 end

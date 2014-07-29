@@ -1,0 +1,10 @@
+<% question = Question.find_by(identifier: identifier) %>
+<div>
+  <%= question.content %>
+  <% question.answers.each do |answer|%>
+    <div>
+      <%= answer.content %>
+      <%= radio_button_tag "questions_answers[#{question.id}]", answer.id %>
+    </div>
+  <% end %>
+</div>

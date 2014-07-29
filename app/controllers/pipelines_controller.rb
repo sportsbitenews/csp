@@ -39,13 +39,12 @@ class PipelinesController < ApplicationController
 
   private
     def process_page
+      reset_session if @pipeline_page.sequencer == 1
       render :show
     end
 
     def redirect_to_pipeline_first_page
-      path = page_path(country: @pipeline.country.code, locale: @pipeline.locale, serial: @pipeline.serial, title: @pipeline.get_first_pipeline_page.title)
-      pr path
-      redirect_to path
+      redirect_to page_path(country: @pipeline.country.code, locale: @pipeline.locale, serial: @pipeline.serial, title: @pipeline.get_first_pipeline_page.title)
     end
 
 end

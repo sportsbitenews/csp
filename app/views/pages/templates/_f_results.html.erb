@@ -1,1 +1,27 @@
 RESULTS
+
+<%= form_for current_order do |f|%>
+  <%= render partial: "pages/partials/page_data" %>
+  <h4><%= current_order.name %> (<%= current_order.age %>)</h4>
+  <div>
+   Augums: <%= current_order.formatted_height(current_country) %>
+  </div>
+  <div>
+    Ķermeņa masas indekss <%= current_order.formatted_weight(current_country) %>
+  </div>
+  <div>
+    Personīgias notievēšanas potenciāls <%= current_order.index %>
+  </div>
+  <div>
+    Svars <%= current_order.formatted_ideal_weight(current_country) %>
+  </div>
+  <div>
+    Līdzīgu cilvēku ideālais svars <%= current_order.potential %>
+  </div>
+  <div>
+    Mērķis notievēt <%= current_order.formatted_goal(current_country) %>
+  </div>
+  <%= f.submit %>
+<% end %>
+
+

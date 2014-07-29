@@ -3,10 +3,11 @@ class Order < ActiveRecord::Base
   include OrderCategoryExt
   include OrderTagExt
   include OrderVirtualAttributesExt
+  include OrderBodyFormulasExt
 
   before_save :assign_category
 
-  attr_accessor :test
+  attr_accessor :test, :validate_email
 
   attr_accessible :email, :status, :locale, :category, :ga_data
   attr_accessible :logs, :tags, :country, :country_id, :pipeline_page, :pipeline_page_id
@@ -20,7 +21,7 @@ class Order < ActiveRecord::Base
   has_many :order_tags, dependent: :destroy
   has_many :tags, through: :order_tags, dependent: :destroy
 
-  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+  validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, if: :validate_email
 
   def male?
     return self.gender == "male"

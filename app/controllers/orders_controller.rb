@@ -19,11 +19,21 @@ class OrdersController < ApplicationController
         @order.save
       end
 
+      check_email_validation params
+
       set_session @order.id
       @order.process_answers params[:questions_answers]
       @order.add_pipeline_page params[:pipeline_page_id]
 
       redirect_to_next_page params
+    end
+
+    def check_email_validation params
+      if params[:order].present? && params[:order][:email].present?
+        @order.validate_email = true
+      else
+        @order.validate_email = false
+      end
     end
 
     def redirect_to_next_page params

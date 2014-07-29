@@ -7,19 +7,19 @@ RESULTS
    Augums: <%= current_order.formatted_height(current_country) %>
   </div>
   <div>
-    Ķermeņa masas indekss <%= current_order.formatted_weight(current_country) %>
+    Ķermeņa masas indekss <%= current_order.index %>
   </div>
   <div>
-    Personīgias notievēšanas potenciāls <%= current_order.index %>
+    Personīgais notievēšanas potenciāls <%= current_order.potential %> %
   </div>
   <div>
-    Svars <%= current_order.formatted_ideal_weight(current_country) %>
+    Svars <%= current_order.formatted_weight current_country %> kg
   </div>
   <div>
-    Līdzīgu cilvēku ideālais svars <%= current_order.potential %>
+    Līdzīgu cilvēku ideālais svars <%= current_order.formatted_ideal_weight current_country %> kg
   </div>
   <div>
-    Mērķis notievēt <%= current_order.formatted_goal(current_country) %>
+    Mērķis notievēt <%= current_order.formatted_goal current_country %> kg
   </div>
   <%= f.submit %>
 <% end %>

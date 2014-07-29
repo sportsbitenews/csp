@@ -1,4 +1,6 @@
-<%= debug current_order %>
-<%= debug session[:current_order_id] %>
-
 <%= render partial: "pages/templates/#{@page.template}" %>
+
+<%= debug current_order %>
+<%= debug current_order.logs.pluck(:key, :value) %>
+<%= debug [current_order.name, current_order.gender, current_order.age, current_order.weight, current_order.height] %>
+<%= debug [current_order.name.class.name, current_order.gender.class.name, current_order.age.class.name, current_order.weight.class.name, current_order.height.class.name] %>

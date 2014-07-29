@@ -1,5 +1,9 @@
 module OrderBodyFormulasExt
 
+  def m_weight
+    return self.weight.to_f
+  end
+
   def height_squared
     if height.to_i > 0
       return ((height.to_f/100) * (height.to_f/100))
@@ -10,16 +14,16 @@ module OrderBodyFormulasExt
   
   def index
     bmi = 0
-    bmi = weight.to_f / (height_squared)
+    bmi = m_weight.to_f / (height_squared)
     return bmi.round(2)
   end
   
   def ideal_index
     index_result = 0
     if gender == "female"
-      index_result = 0.4 * weight.to_f / (height_squared) + (0.03 * age) + 11
+      index_result = 0.4 * m_weight.to_f / (height_squared) + (0.03 * age) + 11
     else
-      index_result = 0.5 * weight.to_f / (height_squared) + 11.5
+      index_result = 0.5 * m_weight.to_f / (height_squared) + 11.5
     end
     return index_result
   end
@@ -32,8 +36,8 @@ module OrderBodyFormulasExt
   end
 
   def formatted_goal current_country, positive: false
-    if weight 
-      goal = ideal_weight - weight
+    if m_weight 
+      goal = ideal_weight - m_weight
       # goal = fixed_goal
     
       if IMPERIAL_SYSTEM_COUNTRY_CODES.include? current_country.code
@@ -65,7 +69,7 @@ module OrderBodyFormulasExt
   end
   
   def goal
-    (ideal_weight - weight)
+    (ideal_weight - m_weight)
   end
 
   def fixed_goal
@@ -77,8 +81,8 @@ module OrderBodyFormulasExt
   end
 
   def overweight
-    if self.weight
-      return (weight - ideal_weight)
+    if m_weight
+      return (m_weight - ideal_weight)
     else
       return 0
     end
@@ -89,8 +93,8 @@ module OrderBodyFormulasExt
   end
 
   def potential
-    if weight
-      g = weight - ideal_weight
+    if m_weight
+      g = m_weight - ideal_weight
       if g <= 0
         return 85
       elsif g > 0 && g <= 30
@@ -104,10 +108,10 @@ module OrderBodyFormulasExt
   end
   
   def formatted_weight current_country
-    if IMPERIAL_SYSTEM_COUNTRY_CODES.include?(current_country.code) && self.weight
-      return self.weight.to(:pounds).floor
+    if IMPERIAL_SYSTEM_COUNTRY_CODES.include?(current_country.code) && m_weight
+      return m_weight.to(:pounds).floor
     else
-      return self.weight
+      return m_weight
     end
   end
   

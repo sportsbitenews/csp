@@ -13,13 +13,13 @@ class OrdersController < ApplicationController
     def process_order_params params
       raise "PipelinePageNotPresent" unless params[:pipeline_page_id].present?
       
+      check_email_validation params
+      
       if params[:order].present?
         @order.update_accessors_and_virtual_attributes!(params[:order]) 
       else
         @order.save
       end
-
-      check_email_validation params
 
       set_session @order.id
       @order.process_answers params[:questions_answers]
@@ -29,10 +29,10 @@ class OrdersController < ApplicationController
     end
 
     def check_email_validation params
-      if params[:order].present? && params[:order][:email].present?
-        @order.validate_email = true
+      if params[:order].present? && (params[:order].include? "email")
+        @order.requires_email_validation = true
       else
-        @order.validate_email = false
+        @order.requires_email_validation = false
       end
     end
 

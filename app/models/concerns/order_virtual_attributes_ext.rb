@@ -58,6 +58,6 @@ module OrderVirtualAttributesExt
     def get_virtual_attribute attribute
       return "" unless attribute.present?
       log_with_attribute = self.logs.find_by(key: attribute)
-      return log_with_attribute.present? ? log_with_attribute.value : ""
+      return log_with_attribute.present? ? log_with_attribute.value : nil
     end
 end

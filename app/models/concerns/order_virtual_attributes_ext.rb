@@ -22,6 +22,7 @@ module OrderVirtualAttributesExt
     method = m.to_s.gsub("=","")
     if is_dynamic_virtual_attribute? method
       define_virtual_attribute_getter_method method
+      return ""
     else 
       super
     end
@@ -54,8 +55,9 @@ module OrderVirtualAttributesExt
       end
     end
 
-    def get_virtual_attribute(attribute)
+    def get_virtual_attribute attribute
+      return "" unless attribute.present?
       log_with_attribute = self.logs.find_by(key: attribute)
-      return log_with_attribute.present? ? log_with_attribute.value : nil
+      return log_with_attribute.present? ? log_with_attribute.value : ""
     end
 end

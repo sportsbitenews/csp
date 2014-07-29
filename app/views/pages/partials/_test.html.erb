@@ -1,8 +1,0 @@
-<%= form_for current_order do |f| %>
-  <%= render partial: "pages/partials/page_data" %>
-  <% questions_hash.each do |identifier| %>
-    <%= render partial: "pages/partials/test_question", locals: {identifier: identifier} %>
-    <br/>
-  <% end %>
-  <%= f.submit %>
-<% end %>

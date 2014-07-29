@@ -20,6 +20,8 @@ class Order < ActiveRecord::Base
   has_many :order_tags, dependent: :destroy
   has_many :tags, through: :order_tags, dependent: :destroy
 
+  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+
   def male?
     return self.gender == "male"
   end

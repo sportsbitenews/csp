@@ -5,4 +5,11 @@ TEST2
  <% questions_hash = ["q0004", "q0005", "q0006", "q0007", "q0008", "q0009"]%>
 <% end %>
 
-<%= render partial: "pages/partials/test", locals: {questions_hash: questions_hash} %>
+<%= form_for current_order do |f| %>
+  <%= render partial: "pages/partials/page_data" %>
+  <% questions_hash.each do |identifier| %>
+    <%= render partial: "pages/partials/test_question", locals: {identifier: identifier} %>
+    <br/>
+  <% end %>
+  <%= f.submit %>
+<% end %>

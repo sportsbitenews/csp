@@ -1,4 +1,5 @@
 class Order < ActiveRecord::Base
+  include OrderHelperMethodsExt
   include OrderGoogleAnalyticsExt
   include OrderCategoryExt
   include OrderTagExt
@@ -23,26 +24,10 @@ class Order < ActiveRecord::Base
 
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, if: :validate_email?
 
-  def validate_email?
-    self.requires_email_validation
-  end
-
-  def male?
-    return self.gender == "male"
-  end
-
-  def female?
-    return self.gender == "female"
-  end
-
   def add_pipeline_page pipeline_page_id
     pipeline_page = PipelinePage.find pipeline_page_id
     self.pipeline_page = pipeline_page
     self.save
-  end
-
-  def pipeline
-    return self.pipeline_page.pipeline
   end
 
   def process_answers params
@@ -61,4 +46,8 @@ class Order < ActiveRecord::Base
     end
   end
 
+  private
+    def validate_email?
+      self.requires_email_validation
+    end
 end

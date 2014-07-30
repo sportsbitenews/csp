@@ -1,13 +1,13 @@
-unless Rails.env.test?
-  ALLOWED_ORDER_DYNAMIC_VIRTUAL_ATTRIBUTES = [
-    :name,
-    :gender, 
-    :age,
-    :height,
-    :weight
-  ]
-else
-  ALLOWED_ORDER_DYNAMIC_VIRTUAL_ATTRIBUTES = [
+ALLOWED_ORDER_DYNAMIC_VIRTUAL_ATTRIBUTES = [
+  :name,
+  :gender, 
+  :age,
+  :height,
+  :weight
+]
+
+if Rails.env.test?
+  ALLOWED_ORDER_DYNAMIC_VIRTUAL_ATTRIBUTES += [
     :custom_key1,
     :custom_key2,
     :custom_key3,

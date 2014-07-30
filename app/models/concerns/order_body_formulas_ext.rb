@@ -4,6 +4,11 @@ module OrderBodyFormulasExt
     return self.weight.to_f
   end
 
+  def m_age
+    return self.age.to_i
+  end
+
+
   def height_squared
     if height.to_i > 0
       return ((height.to_f/100) * (height.to_f/100))
@@ -21,7 +26,7 @@ module OrderBodyFormulasExt
   def ideal_index
     index_result = 0
     if gender == "female"
-      index_result = 0.4 * m_weight.to_f / (height_squared) + (0.03 * age) + 11
+      index_result = 0.4 * m_weight.to_f / (height_squared) + (0.03 * m_age) + 11
     else
       index_result = 0.5 * m_weight.to_f / (height_squared) + 11.5
     end
@@ -46,18 +51,18 @@ module OrderBodyFormulasExt
 
       if positive
         if goal > 0
-          return "- #{goal}"
+          return "- #{goal.to_i}"
         elsif goal < 0
-          return "#{goal.abs}"
+          return "#{goal.abs.to_i}"
         else
           return "0"
         end
       else
         # return "- #{goal.abs}"
         if goal > 0
-          return "+ #{goal}"
+          return "+ #{goal.to_i}"
         elsif goal < 0
-          return "- #{goal.abs}"
+          return "- #{goal.abs.to_i}"
         else
           return "0"
         end

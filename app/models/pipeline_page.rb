@@ -12,10 +12,29 @@ class PipelinePage < ActiveRecord::Base
   validates :page, presence: true
   validates :page_function_group, presence: true
 
-
   def set_sequencer sequencer
     raise unless sequencer.is_a? Integer
     self.update_attributes!(sequencer: sequencer)
+  end
+
+  def process
+    self.page_function_group.process
+  end
+
+  def checkout?
+    return self.page_function_group.type_checkout?    
+  end
+
+  def static?
+    return self.page_function_group.type_static?    
+  end
+
+  def order?
+    return self.page_function_group.type_order?    
+  end
+
+  def success?
+    return self.page_function_group.type_success?    
   end
 
   private

@@ -6,7 +6,7 @@ class Order < ActiveRecord::Base
   include OrderVirtualAttributesExt
   include OrderBodyFormulasExt
 
-  before_save :assign_category
+  before_save :assign_category, :set_email_to_downcase
 
   attr_accessor :test, :requires_email_validation
 
@@ -47,6 +47,10 @@ class Order < ActiveRecord::Base
   end
 
   private
+    def set_email_to_downcase
+      self.email = self.email.downcase if self.email.present?
+    end
+
     def validate_email?
       self.requires_email_validation
     end

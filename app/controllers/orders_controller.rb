@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
       @order.process_answers params[:questions_answers]
       @order.add_pipeline_page params[:pipeline_page_id]
 
-      redirect_to_next_page params
+      redirect_to_next_page
     end
 
     def check_email_validation params
@@ -36,12 +36,11 @@ class OrdersController < ApplicationController
       end
     end
 
-    def redirect_to_next_page params
-      current_pipeline = @order.pipeline
-      sequencer = @order.pipeline_page.sequencer
-      pipeline_page = current_pipeline.get_pipeline_page_by_sequencer sequencer.next
-      title = pipeline_page.title
-      redirect_to page_path(country: current_pipeline.country.code, locale: current_pipeline.locale, serial: current_pipeline.serial, title: title)
+    def redirect_to_next_page
+      current_pipeline_page = @order.pipeline_page
+      sequencer = current_pipeline_page.sequencer
+      next_pipeline_page = current_pipeline_page.pipeline.get_pipeline_page_by_sequencer sequencer.next
+      redirect_to page_path(country: next_pipeline_page.pipeline.country.code, locale: next_pipeline_page.pipeline.locale, serial: next_pipeline_page.pipeline.serial, title: next_pipeline_page.title)
     end
 
 end

@@ -213,4 +213,8 @@ if Rails.env.development?
   chance.update_attributes(title: "last-chance")
   checkout_retry.update_attributes(title: "checkout-retry")
   success.update_attributes(title: "success")
+
+  checkout.add_chance_page chance
+  checkout.add_fail_page checkout_retry
+  checkout.add_success_page success
 end

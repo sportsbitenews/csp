@@ -17,6 +17,10 @@ class PipelinePage < ActiveRecord::Base
     self.update_attributes!(sequencer: sequencer)
   end
 
+  def redirect_to_page_params
+    return {country: self.pipeline.country.code, locale: self.pipeline.locale, serial: self.pipeline.serial, title: self.title}
+  end
+
   def process
     self.page_function_group.process
   end
@@ -35,6 +39,18 @@ class PipelinePage < ActiveRecord::Base
 
   def success?
     return self.page_function_group.type_success?    
+  end
+
+  def add_chance_page pipeline_page
+    self.page_function_group.add_chance_page pipeline_page
+  end
+  
+  def add_fail_page pipeline_page
+    self.page_function_group.add_fail_page pipeline_page
+  end
+  
+  def add_success_page pipeline_page
+    self.page_function_group.add_success_page pipeline_page
   end
 
   private

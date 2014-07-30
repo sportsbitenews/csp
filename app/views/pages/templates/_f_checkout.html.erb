@@ -1,8 +1,5 @@
 CHECKOUT
-
-<div>
-  <a href="">-> SUCCESS</a>
-</div>
+<%= current_order.pipeline_page.page_function_group.inspect %>
 
 <%= form_for current_order do |f| %>
   <%= render partial: "pages/partials/page_data" %>

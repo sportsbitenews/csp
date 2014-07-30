@@ -40,7 +40,7 @@ class OrdersController < ApplicationController
       current_pipeline_page = @order.pipeline_page
       sequencer = current_pipeline_page.sequencer
       next_pipeline_page = current_pipeline_page.pipeline.get_pipeline_page_by_sequencer sequencer.next
-      redirect_to page_path(country: next_pipeline_page.pipeline.country.code, locale: next_pipeline_page.pipeline.locale, serial: next_pipeline_page.pipeline.serial, title: next_pipeline_page.title)
+      redirect_to page_path(next_pipeline_page.redirect_to_page_params)
     end
 
 end

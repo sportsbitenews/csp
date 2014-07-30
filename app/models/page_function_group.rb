@@ -5,9 +5,9 @@ class PageFunctionGroup < ActiveRecord::Base
   belongs_to :function_group
   has_one :pipeline_page
 
-  has_one :chance_pipeline_page_id, class_name: "PipelinePage", foreign_key: "chance_pipeline_page_id"
-  has_one :fail_pipeline_page, class_name: "PipelinePage", foreign_key: "fail_pipeline_page_id"
-  has_one :success_pipeline_page, class_name: "PipelinePage", foreign_key: "success_pipeline_page_id"
+  belongs_to :chance_pipeline_page, class_name: "PipelinePage", foreign_key: "chance_pipeline_page_id"
+  belongs_to :fail_pipeline_page, class_name: "PipelinePage", foreign_key: "fail_pipeline_page_id"
+  belongs_to :success_pipeline_page, class_name: "PipelinePage", foreign_key: "success_pipeline_page_id"
 
   validates :function_group, presence: true
 
@@ -17,16 +17,22 @@ class PageFunctionGroup < ActiveRecord::Base
 
   end
 
-  def add_retry_page
-
+  def add_chance_page pipeline_page
+    raise "AddingPipelinePageReferenceToNonCheckoutPage" unless self.type_checkout?
+    return if self.chance_pipeline_page == pipeline_page
+    self.update_attributes(chance_pipeline_page: pipeline_page)
   end
 
-  def add_fail_page
-    
+  def add_fail_page pipeline_page
+    raise "AddingPipelinePageReferenceToNonCheckoutPage" unless self.type_checkout?
+    return if self.fail_pipeline_page == pipeline_page
+    self.update_attributes(fail_pipeline_page: pipeline_page)
   end
 
-  def add_success_page
-    
+  def add_success_page pipeline_page
+    raise "AddingPipelinePageReferenceToNonCheckoutPage" unless self.type_checkout?
+    return if self.success_pipeline_page == pipeline_page
+    self.update_attributes(success_pipeline_page: pipeline_page)
   end
 
   def type_static?

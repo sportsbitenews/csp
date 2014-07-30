@@ -6,8 +6,8 @@ RSpec.describe PipelinePagesExt, type: :model do
   before(:all) do
     @pipeline = FactoryGirl.create(:pipeline)
     
-    @page = FactoryGirl.create(:page)
-    @page2 = FactoryGirl.create(:page)
+    @page = FactoryGirl.create(:page, template: "1")
+    @page2 = FactoryGirl.create(:page, template: "2")
 
     @page_name = @page.name
     @page2_name = @page2.name

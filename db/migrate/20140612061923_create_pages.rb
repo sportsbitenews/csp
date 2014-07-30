@@ -4,7 +4,6 @@ class CreatePages < ActiveRecord::Migration
       t.string :name
       t.string :template
       t.string :functionality
-      t.references :page_function_group, index: true
       t.timestamps
     end
   end

@@ -4,7 +4,7 @@ class CreatePageFunctionGroups < ActiveRecord::Migration
       t.boolean :require_order, default: false
       t.boolean :call_api, default: false
       
-      t.integer :charge_pipeline_page_id, index: true
+      t.integer :retry_pipeline_page_id, index: true
       t.integer :fail_pipeline_page_id, index: true
       t.integer :success_pipeline_page_id, index: true
 

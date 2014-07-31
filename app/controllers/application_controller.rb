@@ -4,10 +4,12 @@ class ApplicationController < ActionController::Base
   helper_method :current_order, :current_country, :current_language_code, :set_session, :reset_session
 
   def set_session id
+    puts "SET" 
     session[:current_order_id] = id unless session[:current_order_id].present?
   end
 
   def reset_session
+    pr "RESET"
     session[:current_order_id] = nil
   end
 

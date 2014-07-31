@@ -1,12 +1,13 @@
 CHECKOUT
-<a href="">SUCCESS</a>
-<a href="">FAIL</a>
-<a href="">CHANCE</a>
-
-<%= current_order.pipeline_page.success_pipeline_page.inspect %>
-<%= current_order.pipeline_page.fail_pipeline_page.inspect %>
-<%= current_order.pipeline_page.chance_pipeline_page.inspect %>
-
+<div>
+  <a href="<%= page_path(current_order.pipeline_page.success_pipeline_page.redirect_to_page_params) %>">SUCCESS</a>
+</div>
+<div>
+  <a href="<%= page_path(current_order.pipeline_page.fail_pipeline_page.redirect_to_page_params) %>">FAIL</a>
+</div>
+<div>
+  <a href="<%= page_path(current_order.pipeline_page.chance_pipeline_page.redirect_to_page_params) %>">CHANCE</a>
+</div>
 
 <%= form_for current_order do |f| %>
   <%= render partial: "pages/partials/page_data" %>

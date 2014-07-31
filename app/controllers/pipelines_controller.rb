@@ -1,6 +1,6 @@
 class PipelinesController < ApplicationController
   def index
-    @pipeline = Pipeline.locate domain: request.domain, country: current_country, locale: current_language_code
+    @pipeline = Pipeline.locate domain: request.domain, country: current_country, locale: current_locale
 
     pr @pipeline.inspect
 
@@ -32,7 +32,7 @@ class PipelinesController < ApplicationController
         redirect_to_pipeline_first_page
       end
     else
-      @pipeline = Pipeline.locate domain: request.domain, country: current_country, locale: current_language_code
+      @pipeline = Pipeline.locate domain: request.domain, country: current_country, locale: current_locale
       redirect_to_pipeline_first_page
     end
   end

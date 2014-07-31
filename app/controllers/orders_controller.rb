@@ -14,7 +14,9 @@ class OrdersController < ApplicationController
       raise "PipelinePageNotPresent" unless params[:pipeline_page_id].present?
       
       check_email_validation params
-      
+  
+      @order.assign_country_and_locale current_country, current_locale      
+
       if params[:order].present?
         @order.update_accessors_and_virtual_attributes!(params[:order]) 
       else

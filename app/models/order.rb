@@ -40,6 +40,11 @@ class Order < ActiveRecord::Base
     end
   end
 
+  def assign_country_and_locale country, locale
+    self.locale ||= locale
+    self.country ||= country
+  end
+
   private
     def set_email_to_downcase
       self.email = self.email.downcase if self.email.present?

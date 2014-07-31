@@ -29,7 +29,7 @@ RSpec.describe ApplicationController, :type => :controller do
   
   end
 
-  describe "current_language_code" do
+  describe "current_locale" do
 
   end
 

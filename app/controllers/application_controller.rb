@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   # protect_from_forgery with: :exception
 
-  helper_method :current_order, :current_country, :current_language_code, :set_session, :reset_session
+  helper_method :current_order, :current_country, :current_locale, :set_session, :reset_session
 
   def set_session id
     puts "SET" 
@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
     return @current_country
   end
 
-  def current_language_code
+  def current_locale
     return I18n.locale.to_s.split("_").first
   end
 

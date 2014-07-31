@@ -11,6 +11,10 @@ RSpec.describe PipelinePage, :type => :model do
       @checkout_page.add_success_page @success_page
       @checkout_page.add_retry_page @checkout_page
       @checkout_page.add_chance_page @checkout_page
+
+      @checkout_page.reload
+      pr @checkout_page.inspect
+
     end
 
     it "should have success_page present" do

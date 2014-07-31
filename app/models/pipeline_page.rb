@@ -45,19 +45,19 @@ class PipelinePage < ActiveRecord::Base
   def add_success_page pipeline_page
     raise "AddingIncorrectPageTypeError" unless pipeline_page.success?
     raise "AddingPageToNonCheckoutPageError" unless self.checkout?
-    self.update_attributes!(success_pipeline_page: pipeline_page)
+    self.update_attributes!(success_pipeline_page_id: pipeline_page.id)
   end
 
   def add_retry_page pipeline_page
     raise "AddingIncorrectPageTypeError" unless pipeline_page.checkout?
     raise "AddingPageToNonCheckoutPageError" unless self.checkout?
-    self.update_attributes!(retry_pipeline_page: pipeline_page)
+    self.update_attributes!(retry_pipeline_page_id: pipeline_page.id)
   end
   
   def add_chance_page pipeline_page
     raise "AddingIncorrectPageTypeError" unless pipeline_page.checkout?
     raise "AddingPageToNonCheckoutPageError" unless self.checkout?
-    self.update_attributes!(chance_pipeline_page: pipeline_page)
+    self.update_attributes!(chance_pipeline_page_id: pipeline_page.id)
   end
 
 end

@@ -25,9 +25,7 @@ class Order < ActiveRecord::Base
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, if: :validate_email?
 
   def add_pipeline_page pipeline_page_id
-    pipeline_page = PipelinePage.find pipeline_page_id
-    self.pipeline_page = pipeline_page
-    self.save
+    self.update_attributes!(pipeline_page_id: pipeline_page_id)
   end
 
   def process_answers params

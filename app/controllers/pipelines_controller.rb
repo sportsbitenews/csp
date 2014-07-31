@@ -40,6 +40,10 @@ class PipelinesController < ApplicationController
   private
     def process_page
       reset_session if @pipeline_page.sequencer == 1
+
+      next_sequencer = @current_sequencer.next
+      @next_pipeline_page = @pipeline.get_pipeline_page_by_sequencer next_sequencer
+      
       render :show
     end
 

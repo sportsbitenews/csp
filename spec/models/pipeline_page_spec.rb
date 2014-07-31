@@ -26,7 +26,7 @@ RSpec.describe PipelinePage, :type => :model do
     end
 
     it "should have retry page present" do
-      expect(@checkout_page.retry_pipeline_page).to eq @checkout_page
+      expect(@checkout_page.fail_pipeline_page).to eq @checkout_page
     end
   end
 

@@ -14,5 +14,14 @@ Rails.application.routes.draw do
     match "/", to: 'pipelines#index', via: :get
   end
 
+  namespace :pay do
+    resources :paypal, only: [:new, :create] do
+      collection do
+        get :success
+        get :cancel
+      end
+    end
+  end
+
   root to: 'pipelines#index'
 end

@@ -1,12 +1,11 @@
 CHECKOUT
+
 <div>
-  <a href="<%= page_path(current_order.pipeline_page.success_pipeline_page.redirect_to_page_params) %>">SUCCESS</a>
+  <a href="<%= page_path(current_order.pipeline_page.chance_pipeline_page.redirect_to_page_params) %>">TO CHANCE</a>
 </div>
+
 <div>
-  <a href="<%= page_path(current_order.pipeline_page.fail_pipeline_page.redirect_to_page_params) %>">FAIL</a>
-</div>
-<div>
-  <a href="<%= page_path(current_order.pipeline_page.chance_pipeline_page.redirect_to_page_params) %>">CHANCE</a>
+  <a href="<%= new_pay_paypal_path %>">PAYPAL</a>
 </div>
 
 <%= form_for current_order do |f| %>

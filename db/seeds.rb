@@ -210,6 +210,6 @@ if Rails.env.development?
   success.update_attributes(title: "success")
   
   checkout.add_success_page success
-  checkout.add_retry_page checkout_retry
+  checkout.add_fail_page checkout_retry
   checkout.add_chance_page chance
 end

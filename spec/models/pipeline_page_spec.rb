@@ -9,7 +9,7 @@ RSpec.describe PipelinePage, :type => :model do
       @success_page = FactoryGirl.create(:pipeline_page_success)
 
       @checkout_page.add_success_page @success_page
-      @checkout_page.add_retry_page @checkout_page
+      @checkout_page.add_fail_page @checkout_page
       @checkout_page.add_chance_page @checkout_page
 
       @checkout_page.reload
@@ -42,7 +42,7 @@ RSpec.describe PipelinePage, :type => :model do
       end
       
       it "add_retry" do
-        expect{@success_page.add_retry_page @checkout_page}.to raise_error
+        expect{@success_page.add_fail_page @checkout_page}.to raise_error
       end
       it "add_chance" do
         expect{@success_page.add_chance_page @checkout_page}.to raise_error
@@ -60,7 +60,7 @@ RSpec.describe PipelinePage, :type => :model do
       end
       
       it "add_retry" do
-        expect{@checkout_page.add_retry_page @success_page}.to raise_error
+        expect{@checkout_page.add_fail_page @success_page}.to raise_error
       end
       it "add_chance" do
         expect{@checkout_page.add_chance_page @success_page}.to raise_error

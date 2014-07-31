@@ -19,11 +19,11 @@ class PipelinesController < ApplicationController
 
     if @pipeline.present?
       if params[:title].present?
-        @pipeline_page = @pipeline.get_pipeline_page_by_title params[:title]
+        @current_pipeline_page = @pipeline.get_pipeline_page_by_title params[:title]
         
-        if @pipeline_page.present?
-          @page = @pipeline_page.page
-          @current_sequencer = @pipeline_page.sequencer
+        if @current_pipeline_page.present?
+          @page = @current_pipeline_page.page
+          @current_sequencer = @current_pipeline_page.sequencer
           process_page
         else
           redirect_to_pipeline_first_page
@@ -39,7 +39,7 @@ class PipelinesController < ApplicationController
 
   private
     def process_page
-      reset_session if @pipeline_page.sequencer == 1
+      reset_session if @current_pipeline_page.sequencer == 1
 
       next_sequencer = @current_sequencer.next
       @next_pipeline_page = @pipeline.get_pipeline_page_by_sequencer next_sequencer

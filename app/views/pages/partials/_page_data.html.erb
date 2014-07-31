@@ -1,1 +1,3 @@
+<% unless @current_pipeline_page.checkout? %>
 <%= hidden_field_tag :pipeline_page_id, @next_pipeline_page.id %>
+<% end %>

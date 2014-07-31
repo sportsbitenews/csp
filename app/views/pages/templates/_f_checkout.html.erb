@@ -1,5 +1,12 @@
 CHECKOUT
-<%= current_order.pipeline_page.page_function_group.inspect %>
+<a href="">SUCCESS</a>
+<a href="">FAIL</a>
+<a href="">CHANCE</a>
+
+<%= current_order.pipeline_page.success_pipeline_page.inspect %>
+<%= current_order.pipeline_page.fail_pipeline_page.inspect %>
+<%= current_order.pipeline_page.chance_pipeline_page.inspect %>
+
 
 <%= form_for current_order do |f| %>
   <%= render partial: "pages/partials/page_data" %>

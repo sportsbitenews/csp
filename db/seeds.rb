@@ -8,11 +8,6 @@ Country.find_or_create_by({title: "Finland", code: "fi"})
 Country.find_or_create_by({title: "Denmark", code: "dk"})
 Country.find_or_create_by({title: "USA", code: "us"})
 
-FunctionGroup.find_or_create_by(name: "static")
-FunctionGroup.find_or_create_by(name: "order")
-FunctionGroup.find_or_create_by(name: "checkout")
-FunctionGroup.find_or_create_by(name: "success")
-
 q0001 = Question.find_or_create_by(identifier: "q0001")
 q0002 = Question.find_or_create_by(identifier: "q0002")
 q0003 = Question.find_or_create_by(identifier: "q0003")

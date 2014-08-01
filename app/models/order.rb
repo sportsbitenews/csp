@@ -45,6 +45,10 @@ class Order < ActiveRecord::Base
     self.country ||= country
   end
 
+  def assign_ga_data ga_data
+    self.ga_data ||= ga_data.to_s
+  end
+
   private
     def set_email_to_downcase
       self.email = self.email.downcase if self.email.present?

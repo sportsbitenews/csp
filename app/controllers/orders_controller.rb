@@ -15,7 +15,9 @@ class OrdersController < ApplicationController
       
       check_email_validation params
   
-      @order.assign_country_and_locale current_country, current_locale      
+      @order.assign_country_and_locale current_country, current_locale
+      pr params.inspect
+      @order.assign_ga_data params[:ga_data]
 
       if params[:order].present?
         @order.update_accessors_and_virtual_attributes!(params[:order]) 

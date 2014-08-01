@@ -1,11 +1,25 @@
 class ApplicationController < ActionController::Base
   # protect_from_forgery with: :exception
 
-  helper_method :current_order, :current_country, :current_locale, :set_session, :reset_session
+  helper_method :current_order, :current_country, :current_locale, :set_session, :reset_session, :capture_ga_data
 
   def set_session id
     puts "SET" 
     session[:current_order_id] = id unless session[:current_order_id].present?
+  end
+
+  def capture_ga_data
+    return @ga_data if @ga_data.present?
+    pr params.inspect
+    @ga_data = {}
+    @ga_data.merge! utm_source: params[:utm_source] if params[:utm_source].present?
+    @ga_data.merge! utm_medium: params[:utm_medium] if params[:utm_medium].present?
+    @ga_data.merge! utm_term: params[:utm_term] if params[:utm_term].present?
+    @ga_data.merge! utm_content: params[:utm_content] if params[:utm_content].present?
+    @ga_data.merge! utm_campaign: params[:utm_campaign] if params[:utm_campaign].present?
+
+    pr @ga_data
+    return @ga_data
   end
 
   def reset_session
